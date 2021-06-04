@@ -1,6 +1,7 @@
 import { ADD_CONTACT, DELETE_CONTACT, SET_VISIBILITY_FILTER } from './types';
 
 let nextContactId = 0;
+
 const addContact = (phone, name) => ({
     type: ADD_CONTACT,
     id: nextContactId++,
@@ -20,4 +21,4 @@ const setVisibilityFilter = filter => ({
     filter,
 });
 
-export default { addContact, deleteContact, setVisibilityFilter };
+export { addContact, deleteContact, setVisibilityFilter };

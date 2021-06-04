@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import deleteContact from '../actions/index';
+import { deleteContact } from '../actions/index';
 import ContactList from '../components/ContactList';
 import { VisibilityFilters } from '../actions/types';
 
@@ -10,7 +10,7 @@ const getVisibleContact = (contacts, filter) => {
 
         default:
             return contacts;
-        // throw new Error('Unknown filter: ' + filter);
+            throw new Error('Unknown filter: ' + filter);
     }
 };
 
