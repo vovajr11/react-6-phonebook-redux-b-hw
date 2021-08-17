@@ -1,12 +1,13 @@
 import React from 'react';
-import AddContact from '../containers/AddContact';
-import VisibleContactList from '../containers/VisibleContactList';
-import Filter from '../containers/Filter';
+import ContactEditor from './ContactEditor';
+import ContactList from './ContactList';
+import Filter from './Filter';
 
 const App = () => (
     <div>
-        <AddContact />
-        <VisibleContactList />
+        <h1>Phonebook</h1>
+        <ContactEditor />
+        <ContactList />
         <Filter />
     </div>
 );
