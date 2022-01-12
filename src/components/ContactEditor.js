@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import contactActions from '../redux/phonebook/phonebookActions';
+import contactOperations from '../redux/phonebook/phonebookOperations';
+import { Form, Button } from 'react-bootstrap';
 
 const INITIAL_STATE = {
     phone: '',
@@ -34,37 +36,36 @@ class ContactEditor extends Component {
     render() {
         return (
             <form className="TaskEditor" onSubmit={this.handleSubmit}>
-                <label className="TaskEditor-label">
-                    phone
-                    <input
-                        className="TaskEditor-input"
-                        type="number"
-                        name="phone"
-                        value={this.state.phone}
-                        onChange={this.handleChange}
-                    />
-                </label>
-                <label className="TaskEditor-label">
-                    name
-                    <input
-                        className="TaskEditor-input"
-                        type="text"
-                        name="name"
-                        value={this.state.name}
-                        onChange={this.handleChange}
-                    />
-                </label>
+                <Form.Control
+                    type="text"
+                    name="phone"
+                    value={this.state.phone}
+                    onChange={this.handleChange}
+                    placeholder="Phone"
+                />
+                <br />
+                <Form.Control
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    value={this.state.name}
+                    onChange={this.handleChange}
+                />
 
-                <button type="submit" className="TaskEditor-button">
-                    Добавить заметку
-                </button>
+                <Button
+                    className="btnSubmit"
+                    type="submit"
+                    variant="outline-success"
+                >
+                    Add
+                </Button>
             </form>
         );
     }
 }
 
 const mapDispatch = {
-    onAddContact: contactActions.addContact,
+    onAddContact: contactOperations.addContact,
 };
 //  ^
 // ||

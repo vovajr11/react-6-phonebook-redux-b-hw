@@ -1,16 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import phonebookActions from '../redux/phonebook/phonebookActions';
+
 import Contact from './Contact';
 
-const ContactList = ({ contacts, onRemoveContact }) => (
-    <ul>
-        {contacts.map(contact => (
-            <Contact
-                key={contact.id}
-                {...contact}
-                onClick={() => onRemoveContact(contact.id)}
-            />
+const ContactList = ({ contacts }) => (
+    <ul className="list">
+        {contacts.map(({ id }) => (
+            <Contact key={id} id={id} />
         ))}
     </ul>
 );
@@ -28,8 +24,4 @@ const mapState = state => {
     };
 };
 
-const mapDispatch = {
-    onRemoveContact: phonebookActions.removeContact,
-};
-
-export default connect(mapState, mapDispatch)(ContactList);
+export default connect(mapState)(ContactList);

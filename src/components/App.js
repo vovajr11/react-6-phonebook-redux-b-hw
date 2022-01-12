@@ -1,15 +1,36 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import phonebookOperations from '../redux/phonebook/phonebookOperations';
 import ContactEditor from './ContactEditor';
 import ContactList from './ContactList';
 import Filter from './Filter';
 
-const App = () => (
-    <div>
-        <h1>Phonebook</h1>
-        <ContactEditor />
-        <ContactList />
-        <Filter />
-    </div>
-);
+class App extends Component {
+    componentDidMount() {
+        this.props.onFetchTasks();
+    }
 
-export default App;
+    render() {
+        return (
+            <section>
+                <h1>Phonebook</h1>
+                <div className="flex">
+                    <ContactEditor />
+                    {this.props.isLoadingContacts && <h1>LOADING...</h1>}
+                    <ContactList />
+                </div>
+                <Filter />
+            </section>
+        );
+    }
+}
+
+const mapState = state => ({
+    isLoadingContacts: state.contacts.loading,
+});
+
+const mapDispatch = {
+    onFetchTasks: phonebookOperations.fetchContacts,
+};
+
+export default connect(mapState, mapDispatch)(App);

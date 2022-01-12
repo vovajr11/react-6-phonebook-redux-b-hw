@@ -1,15 +1,29 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import phonebookOperations from '../redux/phonebook/phonebookOperations';
+import { Button } from 'react-bootstrap';
 
-const Contact = ({ onClick, phone, name }) => (
-    <li>
+const Contact = ({ phone, name, onRemove }) => (
+    <li className="contactItem">
         <div>
             <p>{name}</p>
             <p>{phone}</p>
         </div>
-        <button onClick={onClick} type="button">
+
+        <Button onClick={onRemove} type="button" variant="danger">
             Deleted
-        </button>
+        </Button>
     </li>
 );
 
-export default Contact;
+const mapState = (state, ownProps) => {
+    const item = state.contacts.items.find(item => item.id === ownProps.id);
+
+    return { ...item };
+};
+
+const mapDispatch = (dispatch, ownProps) => ({
+    onRemove: () => dispatch(phonebookOperations.removeContact(ownProps.id)),
+});
+
+export default connect(mapState, mapDispatch)(Contact);

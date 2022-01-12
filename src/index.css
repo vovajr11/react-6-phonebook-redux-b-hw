@@ -2,6 +2,45 @@ body {
     margin: 50px;
 }
 
-.form {
-    width: 500px;
+.flex {
+    display: flex;
+}
+
+.list {
+    padding: 0;
+    list-style: none;
+    margin-left: 60px;
+    width: 300px;
+}
+
+.contactItem {
+    display: flex;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+        0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+}
+
+.contactItem div {
+    display: flex;
+    align-items: center;
+}
+
+.contactItem div p {
+    margin: 0 10px 0 0;
+}
+
+.TaskEditor {
+    width: 300px;
+}
+
+.Filter {
+    width: 300px;
+    margin-top: 20px;
+}
+
+.btnSubmit {
+    margin-top: 20px;
+    width: 100%;
 }
